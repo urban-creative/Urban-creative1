@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Urban Creative | Ultra Dynamic</title>
+  <title>Urban Creative</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -89,6 +89,127 @@
     header.scrolled { padding: 10px 8%; }
 
     .brand { display: flex; align-items: center; gap: 12px; }
+    /* ===== MODERN CART ===== */
+.wc2-wrapper {
+  max-width: 520px;
+  margin: 50px auto;
+  padding: 28px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(0,0,0,0.6));
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.wc2-title {
+  text-align: center;
+  color: var(--primary);
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.wc2-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px dashed rgba(255,255,255,0.15);
+}
+
+.wc2-item span {
+  font-size: 0.95rem;
+}
+
+.wc2-item .price {
+  color: #aaa;
+  font-size: 0.85rem;
+}
+
+.wc2-item button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(45deg, #25D366, #1ebe57);
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: 800;
+  cursor: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.wc2-item button:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 15px rgba(37,211,102,0.6);
+}
+
+.wc2-cart {
+  margin-top: 25px;
+}
+
+.wc2-cart h4 {
+  color: #fff;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.wc2-cart ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.wc2-cart li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 0.9rem;
+  animation: fadeSlide 0.3s ease;
+}
+
+.wc2-cart li button {
+  background: transparent;
+  border: none;
+  color: #ff4444;
+  font-size: 1.1rem;
+  cursor: none;
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.wc2-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.wc2-send {
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(45deg, #25D366, #1ebe57);
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.wc2-send:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(37,211,102,0.6);
+}
     
     .profile-pic {
       width: 50px; height: 50px;
@@ -237,40 +358,250 @@
       transition: 0.3s; position: relative; overflow: hidden;
     }
     .auth-box button:hover { transform: scale(1.02); box-shadow: 0 0 20px var(--primary); }
+#portfolio {
+  position: relative;
+  padding: 80px 0;
+}
 
-    /* === 3D PORTFOLIO === */
-    .portfolio-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 30px;
-      padding: -2px;
-      perspective: 550px;
-    }
+.portfolio-gallery-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
 
-    .card {
-      width: 100%;
-      aspect-ratio: 16/10;
-      border-radius: 15px;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 0.1s; /* Quick response for tilt */
-      cursor: none;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-      background-size: cover;
-      background-position: center;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    
-    .card::before {
-      content: '';
-      position: absolute; top:0; left:0; width:100%; height:100%;
-      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-      border-radius: 15px;
-      opacity: 0; transition: 0.3s;
-    }
-    .card:hover::before { opacity: 1; }
-    
-    .card:hover { z-index: 10; border-color: var(--primary); box-shadow: 0 0 30px rgba(255,102,0,0.3); }
+.portfolio-gallery {
+  display: flex;
+  gap: 0;
+  will-change: transform;
+}
+
+.portfolio-gallery .card {
+  min-width: 100vw;          /* FULL WIDTH */
+  height: 70vh;              /* FULL SIZE FEEL */
+  max-height: 800px;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+  transition: transform 0.8s ease, filter 0.8s ease;
+}
+
+/* Depth & focus */
+.portfolio-gallery .card:not(:hover) {
+  filter: brightness(0.85);
+}
+
+/* Navigation */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 20;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background: rgba(0,0,0,0.85);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.prev {
+  left: 20px;
+}
+
+.carousel-btn.next {
+  right: 20px;
+}
+
+/* Subtle gradient edges */
+.portfolio-gallery-wrapper::before,
+.portfolio-gallery-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.portfolio-gallery-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.4), transparent);
+}
+
+.portfolio-gallery-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(0,0,0,0.4), transparent);
+}
+
+#portfolio {
+  position: relative;
+  padding: 60px 0;
+  background: #111;
+  overflow: hidden;
+  color: #fff;
+}
+
+.portfolio-gallery-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.portfolio-gallery {
+  display: flex;
+  gap: 0;
+  will-change: transform;
+  cursor: grab;
+}
+
+.portfolio-gallery:active {
+  cursor: grabbing;
+}
+
+.portfolio-gallery .card {
+  min-width: 100vw; /* full viewport width */
+  height: 90vh;
+  max-height: 400px;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+  transition: transform 0.8s ease, filter 0.8s ease, box-shadow 0.5s ease;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.portfolio-gallery .card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+  filter: brightness(1.1);
+}
+
+/* Animated captions */
+.caption {    
+  font-size: 2rem;
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.7);
+}
+
+.portfolio-gallery .card:hover .caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Navigation buttons */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 32px;
+  cursor: pointer;
+  z-index: 20;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background: rgba(0,0,0,0.85);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.prev {
+  left: 20px;
+}
+
+.carousel-btn.next {
+  right: 20px;
+}
+
+/* Ambient glow effect at edges */
+.portfolio-gallery-wrapper::before,
+.portfolio-gallery-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.portfolio-gallery-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.6), transparent);
+}
+
+.portfolio-gallery-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(0,0,0,0.6), transparent);
+}
+
+/* === CARD STYLING === */
+.card {
+  width: 100%;
+  aspect-ratio: 16/10;
+  border-radius: 15px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* === GRADIENT HIGHLIGHT ON HOVER === */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+  border-radius: 15px;
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+  transform: scale(1.05); /* Slight zoom for fun effect */
+}
+
+/* === HOVER INTERACTION === */
+.card:hover {
+  z-index: 10;
+  border-color: var(--primary);
+  box-shadow: 0 15px 35px rgba(255, 102, 0, 0.35);
+  transform: rotateX(5deg) rotateY(5deg) scale(1.05);
+}
+
+/* Optional: Subtle tilt effect on mouse movement */
+.card[data-tilt] {
+  will-change: transform;
+  transition: transform 0.2s ease-out;
+}
 
     /* === CONTACT FORM === */
     .contact form {
@@ -293,6 +624,20 @@
       width: 100%; transition: 0.3s;
     }
     .contact button:hover { letter-spacing: 2px; background: #fff; color: var(--primary); }
+
+    /* === DASHBOARD LAYOUT === */
+    #dashboard { min-height: 100vh; padding: 120px 8% 40px; animation: fadeIn 0.8s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .dash-grid { display: grid; grid-template-columns: 1fr 320px; gap: 30px; margin-top: 30px; }
+    .dash-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 25px; backdrop-filter: blur(15px); }
+    
+    .status-bar { height: 10px; background: #111; border-radius: 10px; margin: 15px 0; overflow: hidden; }
+    .status-fill { height: 100%; background: var(--primary); width: 0%; box-shadow: 0 0 15px var(--primary); transition: 1.5s ease-in-out; }
+
+    .activity-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .badge { padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; background: rgba(255,102,0,0.1); color: var(--primary); }
+
 
     /* ===============================
    ULTRA DYNAMIC FOOTER
@@ -456,8 +801,9 @@
       }
       nav.active { max-height: 400px; padding: 20px 0; }
       .hamburger { display: flex; }
+      .dash-grid { grid-template-columns: 1fr; }
     }
-    .hidden { display: none; }
+    .hidden { display: none !important; }
   </style>
 </head>
 <body>
@@ -483,295 +829,370 @@
       <span></span><span></span><span></span>
     </div>
   </header>
-
-  <section id="home">
-    <h2 class="reveal">Welcome</h2>
-    <div class="typing reveal" id="typing"></div>
-  </section>
-  <section id="resume">
-    <h2 class="reveal">About Us</h2>
-    <p class="reveal">Urban Creative is an independent 
-deadline-driven designers with years of experience creating impactful digital experiences. We bridge the gap between imagination and reality.
-Let's bring your brand to life
-</p>
-  <section id="services">
-    <h2 class="reveal">Services</h2>
-    <p class="reveal">
-        
-        
-        
-        <body>
-
-<div class="container">
-    <header class="header">        
-        <H5><h5>
-    </header>
-
-    <div class="grid">
-        <div class="card">
-            <br>
-            <h4>Graphic Design</h4>
-            <ul>
-                <li> Poster Design (Events, Birthdays)</li>
-                <li> Music & Album Covers</li>
-                <li> Logo & Brand Identity</li>
-                <li> Advertisement Design</li>
-                <li> Social Media Banners</li>
-                <li> Business Cards</li>
-            </ul>
-        </div>
-        <br>
-<br>
-        <div class="card">
-            
-            <h2>Web & Online</h2>
-            <ul>
-                <li>Professional Web Design</li>
-                <li>Online Blogging Services</li>
-                <li>UI/UX Optimization</li>
-                <li>Domain & Hosting Setup</li>
-            </ul>
-        </div>
-<br>
-<br>
-        <div class="card">
-            
-            <h2>Digital Marketing</h2>
-           
-            <ul>
-                <li>Online Advertising</li>
-                <li>Social Media Management</li>
-                <li>Brand Promotion</li>
-                <li>Content Strategy</li>
-            </ul>
-        </div>
+<section id="portfolio">
+ <br>
+  <br>
+  <div class="portfolio-gallery-wrapper">
+    <div class="portfolio-gallery">
+      <div class="card hover-target reveal" style="background-image:url('https://i.imgur.com/z4rD18z.jpeg')" title="Project 1">
+        <div class="caption">Project 1</div>
+      </div>
+      <div class="card hover-target reveal" style="background-image:url('https://i.imgur.com/iFDOPDL.jpeg')" title="Project 2">
+        <div class="caption">Project 2</div>
+      </div>
+      <div class="card hover-target reveal" style="background-image:url('https://i.imgur.com/q7Da6XZ.jpeg')" title="Project 3">
+        <div class="caption">Project 3</div>
+      </div>
+      <div class="card hover-target reveal" style="background-image:url('https://i.imgur.com/9htHk5q.jpeg')" title="Project 4">
+        <div class="caption">Project 4</div>
+      </div>
+      <div class="card hover-target reveal" style="background-image:url('https://i.imgur.com/XBoEIja.jpeg')" title="Project 5">
+        <div class="caption">Project 5</div>
+      </div>
     </div>
-<br>
-    <section class="benefits">
-        <h3>Why Choose Us?</h3>
-        <div class="benefit-tags">
-            <span class="tag">Creative & Modern</span>
-            <span class="tag">Affordable</span>
-            <span class="tag">Timely Delivery</span>
-            <span class="tag">Customer-Focused</span>
-        </div>
-    </section>
-
-    <div class="cta">
-        <a
-  href="https://wa.me/254789935506?text=Hello urban creative%20I%20would%20like%20to%20 request%20for%20your services."
-  target="_blank"
-  rel="noopener noreferrer"
-  class="wa-float"
-  aria-label="Chat with us on WhatsApp"
->
-  <span class="wa-tooltip">☜ Chat with us</span>
-
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 32 32"
-    aria-hidden="true"
-  >
-    <path
-      fill="currentColor"
-      d="M16.003 3C9.383 3 4 8.383 4 15.003c0 2.646.863 5.09 2.33 7.066L4 29l7.147-2.273A11.94 11.94 0 0 0 16.003 27C22.623 27 28 21.623 28 15.003 28 8.383 22.623 3 16.003 3zm0 21.88c-1.87 0-3.705-.502-5.308-1.45l-.38-.223-4.243 1.35 1.387-4.134-.247-.425a9.85 9.85 0 0 1-1.34-4.995c0-5.45 4.436-9.887 9.887-9.887s9.887 4.437 9.887 9.887-4.436 9.887-9.887 9.887zm5.405-7.41c-.295-.147-1.742-.86-2.01-.958-.268-.098-.463-.147-.66.147-.196.295-.758.958-.93 1.154-.17.196-.34.22-.635.073-.295-.147-1.245-.458-2.372-1.46-.877-.78-1.47-1.743-1.64-2.038-.17-.295-.018-.454.128-.6.132-.132.295-.34.443-.51.148-.17.197-.295.295-.492.098-.197.05-.37-.025-.517-.074-.147-.66-1.596-.905-2.186-.24-.578-.485-.5-.66-.51h-.565c-.197 0-.517.074-.787.37-.27.295-1.033 1.01-1.033 2.456s1.058 2.85 1.206 3.047c.147.197 2.082 3.18 5.046 4.456.705.305 1.255.487 1.683.624.707.224 1.352.193 1.86.117.567-.085 1.742-.713 1.988-1.4.245-.688.245-1.277.172-1.4-.074-.123-.27-.196-.565-.344z"
-    />
-  </svg>
-</a>
+  </div>
+</section>
+     <div class="typing reveal" id="typing"></div>
 
 <style>
-  .wa-float {
-    position: fixe;
-    bottom: 0px;
-    right: 0px;
-    width: 60px;
-    height: 62px;
-    background-color: #25D366;
-    color: #ffffff;
-    border-radius: 600%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    z-index: 999;
-    animation: wa-pulse 2.5s infinite;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-
-  .wa-float:hover {
-    transform: scale(1.1);
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
-    animation: none;
-  }
-
-  .wa-float svg {
-    width: 38px;
-    height: 26px;
-  }
-
-  /* Tooltip */
-  .wa-tooltip {
-    position: absolute;
-    right: 75px;
-    background: #111;
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 15px;
-    font-family: Arial, sans-serif;
-    white-space: nowrap;
-    opacity: 80;
-    pointer-events: none;
-    transform: translateY(4px);
-    transition: opacity 0.2s ease, transform 0.2s ease;
-  }
-
-  .wa-float:hover .wa-tooltip {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Pulse animation */
-  @keyframes wa-pulse {
-    0% {
-      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
-    }
-    70% {
-      box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
-    }
-    100% {
-      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-    }
-  }
-
-  /* Dark mode support */
-  @media (prefers-color-scheme: dark) {
-    .wa-tooltip {
-      background: #222;
-    }
-  }
+#typing {
+  width: 300px; /* or any width you want */
+  margin: 0 auto; /* centers horizontally */
+  text-align: center; 
+  color: 
+  /* centers text/content inside */
+}
 </style>
-        <p style="margin-top: 20px; opacity: 0.7;color: #ff6600;background: color:#222;">Bringing your Dreams to Reality.</p>
-    </div>
+      </section>
+
+      <section id="resume">
+        <h2 class="reveal">About Us</h2>
+        <p class="reveal">Urban Creative is an independent 
+    deadline-driven designers with years of experience creating impactful digital experiences. We bridge the gap between imagination and reality.
+    Let's bring your brand to life
     </p>
-  </section>
+      </section>
 
-  <section id="portfolio">
-    <h2 class="reveal">Selected Works</h2>
-    <p class="reveal"></p>
-    
-    
+      <section id="services">
+        <h2 class="reveal">Services</h2>
+        <div class="grid">
+            
+            <div class="card">
+                <br>
+                <h4>Graphic Design</h4>
+                <ul>
+                    <li>• Poster Design </li>
+                    <li>•  Music & Album Covers</li>
+                    <li>• Logo & Brand Identity</li>
+                    <li>• Advertisement Design</li>
+                    <li>• Social Media Banners</li>
+                    <li>• Business Cards</li>              
+                      <li>• </li>                                 
+                </ul>
+            </div>
+            <br>
+            <div class="card">
+                <h2>Web & Online</h2>
+                <ul>
+                    <li>⌯⌲ Professional Web Design</li>
+                    <li>⌯⌲ Online Blogging Services</li>
+                    <li>⌯⌲ UI/UX Optimization</li>
+                    <li>⌯⌲ Domain & Hosting Setup</li>
+                </ul>
+            </div>
+            <br>
+            <div class="card">
+                <h2>Digital Marketing</h2>
+                <ul>
+                    <li>• Online Advertising</li>
+                    <li>• Social Media Management</li>
+                    <li>• Brand Promotion</li>
+                    <li>• Content Strategy</li>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <section class="benefits">
+          <h3 style="text-decoration: none; color: #FF7300;">Why Choose Us?</h3>
+          <br>
+          <div class="card">
+                <ul>
+                    <li> ☑ Affordable</li>
+                    <li>☑ Timely Delivery</li>
+                    <li>☑ Customer-Focused</li>       
+                    <li>☑ Creative & Modern</li>
+                </ul>
+            </div>
+        </section>
 
-    <div class="portfolio-gallery">
-      <div class="card hover-target reveal" style="background-image:url('https://i.imgur.com/z4rD18z.jpeg')" title="Project 1"></div>
-      <div class="card hover-target reveal" style="background-image:url('https://i.imgur.com/iFDOPDL.jpeg')" title="Project 2"></div>
-      <div class="card hover-target reveal" style="background-image:url('https://i.imgur.com/q7Da6XZ.jpeg')" title="Project 3"></div>
-      <div class="card hover-target reveal" style="background-image:url('https://i.imgur.com/9htHk5q.jpeg')" title="Project 4"></div>
-      <div class="card hover-target reveal" style="background-image:url('https://i.imgur.com/XBoEIja.jpeg')" title="Project 5"></div>
-    </div>
-  </section>
-    <section id="about">
-    <h2 class="reveal">Account Access</h2>
-    <p class="reveal">Log in to access premium content and manage your services.</p>
+        <div class="wc2-wrapper reveal">
+          <h3 class="wc2-title">Order Services</h3>
+          <div class="wc2-item">
+            <span>Logo Design</span>
+            <span class="price">KES 3,500</span>
+            <button onclick="wc2Add('Logo Design', 3500)">+</button>
+          </div>
+          <div class="wc2-item">
+            <span>Poster Design</span>
+            <span class="price">KES 1,000</span>
+            <button onclick="wc2Add('Poster Design', 1000)">+</button>
+          </div>
+          <div class="wc2-item">
+            <span>Website Design</span>
+            <span class="price">KES 15,000</span>
+            <button onclick="wc2Add('Website Design', 15000)">+</button>
+          </div>
+          <div class="wc2-cart">
+            <h4>Selected Services</h4>
+            <ul id="wc2List"></ul>
+            <div class="wc2-total">Total: <span>KES <b id="wc2Total">0</b></span></div>
+            <button class="wc2-send" onclick="wc2Send()">Send via WhatsApp</button>
+          </div>
+        </div>
+      </section>
 
-    <div class="auth-container auth-box reveal">
-      <div class="tabs">
-        <div class="tab active hover-target" id="loginTab" onclick="showTab('login')">Login</div>
-        <div class="tab hover-target" id="signupTab" onclick="showTab('signup')">Sign Up</div>
-      </div>
+      
+        </div>
+      </section>
 
-      <div id="loginForm">
-        <input id="loginEmail" type="email" placeholder="Email Address" class="hover-target" required />
-        <input id="loginPassword" type="password" placeholder="Password" class="hover-target" required />
-        <button onclick="login()" class="hover-target">Login Account</button>
-      </div>
+      <section id="about">
+                  <p class="reveal" style="color: #FF7300;">USER LOGIN</p> <p class="reveal">Log in to access your account.</p>
+        <div class="auth-container auth-box reveal">
+          <div class="tabs">
+            <div class="tab active hover-target" id="loginTab" onclick="showTab('login')">Login</div>
+            <div class="tab hover-target" id="signupTab" onclick="showTab('signup')">Sign Up</div>
+          </div>
+          <div id="loginForm">
+            <input id="loginEmail" type="email" placeholder="Email Address" class="hover-target" required />
+            <input id="loginPassword" type="password" placeholder="Password" class="hover-target" required />
+            <button onclick="login()" class="hover-target">Login Account</button>
+          </div>
+          <div id="signupForm" class="hidden">
+            <input id="signupEmail" type="email" placeholder="Email Address" class="hover-target" required />
+            <input id="signupPassword" type="password" placeholder="Create Password" class="hover-target" required />
+            <button onclick="signup()" class="hover-target">Create Account</button>
+          </div>
+          <p id="msg" style="margin-top: 15px; font-size: 0.9rem; text-align: center;"></p>
+        </div>
+      </section>
 
-      <div id="signupForm" class="hidden">
-        <input id="signupEmail" type="email" placeholder="Email Address" class="hover-target" required />
-        <input id="signupPassword" type="password" placeholder="Create Password" class="hover-target" required />
-        <button onclick="signup()" class="hover-target">Create Account</button>
-      </div>
+      <section id="contact" class="contact">
+        <h2 class="reveal">Contact Us</h2>
+        <form action="https://formspree.io/f/xeoryeoj" method="POST" class="reveal">
+          <input type="text" name="name" placeholder="Your Name" class="hover-target" required />
+          <input type="email" name="email" placeholder="Your Email" class="hover-target" required />
+          <textarea name="message" rows="5" placeholder="How can we help you?" class="hover-target" required></textarea>
+          <button type="submit" class="hover-target">Send Message</button>
+        </form>
+      </section>
 
-      <p id="msg"></p>
-    </div>
-  </section>
-
-  <section id="contact" class="contact">
-    <h2 class="reveal">Contact Us</h2>
-    <p class="reveal">Ready to start your project? Send us a message.</p>
-    <form action="https://formspree.io/f/xeoryeoj" method="POST" class="reveal">
-      <input type="text" name="name" placeholder="Your Name" class="hover-target" required />
-      <input type="email" name="email" placeholder="Your Email" class="hover-target" required />
-      <input type="text" name="subject" placeholder="Subject" class="hover-target" />
-      <textarea name="message" rows="5" placeholder="How can we help you?" class="hover-target" required></textarea>
-      <button type="submit" class="hover-target">Send Message</button>
-    </form>
-  </section>
-<footer class="ultra-footer">
-  <div class="footer-glow"></div>
-
-  <div class="footer-wrapper">
-
-    <!-- Brand / Identity -->
-    <div class="footer-block brand-block">
-      <h2 class="footer-brand">Urban Creative</h2>
-      <p>
-        A next-generation creative studio crafting immersive digital
-        experiences, futuristic brands, and high-impact web solutions.
-      </p>
-    </div>
-
-    <!-- Navigation -->
-    <div class="footer-block">
-      <h4>Explore</h4>
-      <ul>
-        <li><a href="#home" class="hover-target">Home</a></li>
-        <li><a href="#resume" class="hover-target">About</a></li>
-        <li><a href="#services" class="hover-target">Services</a></li>
-        <li><a href="#portfolio" class="hover-target">Portfolio</a></li>
-        <li><a href="#contact" class="hover-target">Contact</a></li>
-      </ul>
-    </div>
-
-    <!-- Services -->
-    <div class="footer-block">
-      <h4>Expertise</h4>
-      <ul>
-        <li>Web Development</li>
-        <li>UI / UX Design</li>
-        <li>Brand Identity</li>
-        <li>Graphic Design</li>
-        <li>Creative Strategy</li>
-      </ul>
-    </div>
-
-    <!-- Contact -->
-    <div class="footer-block">
-      <h4>Connect</h4>
-      <p>Email: <a href="mailto:urbancreative@gmail.com">urbancreative@gmail.com</a></p>
-      <p>Phone:0789935506 </p>
-
-      <div class="social-orbs">
-        <a href="#" class="hover-target">FB</a>
-        <a href="https://wa.me/254789935506?text=                                                " class="hover-target">Chat</a>
-        <a href="#" class="hover-target">X</a>
-        <a href="#" class="hover-target">IN</a>
-      </div>
-    </div>
-
+      <footer class="ultra-footer">
+          <div class="footer-glow"></div>
+          <div class="footer-wrapper">
+            <div class="footer-block brand-block">
+              <h2 class="footer-brand">Urban Creative</h2>
+              <p>Delivering designs that sell your story and attract your audience.</p>
+            </div>
+            <div class="footer-block">
+              <h4>Explore</h4>
+              <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+              </ul>
+            </div>
+            <div class="footer-block">
+              <h4>Connect</h4>
+              <p><a href="mailto:urbancreative@gmail.com">   📧urbancreative@gmail.com</a></p>
+              <p>✆ 0789 935 506</p>
+            </div>
+          </div>
+          <div class="footer-core"><span>© 2026 Urban Creative All Rights Reserved.</span></div>
+      </footer>
   </div>
 
-  <!-- Bottom Bar -->
-  <div class="footer-core">
-    <span>© 2026 Urban Creative</span>
-    <span>Crafted with precision by <a href="#" class="hover-target">Jay Breezyl</a></span>
+  <div id="dashboard" class="hidden">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px;">
+        <div>
+            <h1 id="dash-welcome" style="font-size: 2rem;">Hello, Client</h1>
+            <p style="color: #888;">Here is the progress of your creative assets.</p>
+        </div>
+        <button class="hover-target" onclick="location.reload()" style="background: none; border: none; color: var(--primary); font-weight: 800; font-size: 1rem;">LOGOUT</button>
+    </div>
+
+    <div class="dash-grid">
+        <div class="left-col">
+            <div class="dash-card">
+                <h3>Active Project: Brand Identity</h3>
+                <p style="font-size: 0.8rem; color: #888;">Estimated Completion: Feb 12, 2026</p>
+                <div class="status-bar"><div class="status-fill" id="p-bar"></div></div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
+                    <span>Phase: Final Rendering</span>
+                    <span style="color: var(--primary);">65% Done</span>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 30px; margin-bottom: 15px;">Recent Activity</h3>
+            <div class="dash-card">
+                <div class="activity-item">
+                    <div>
+                        <h4>Logo Draft V2 Uploaded</h4>
+                        <p style="font-size: 0.7rem; color: #666;">Jan 24, 2026 • 04:30 PM</p>
+                    </div>
+                    <span class="badge">Review Needed</span>
+                </div>
+                <div class="activity-item" style="border: none;">
+                    <div>
+                        <h4>Invoice #044 Paid</h4>
+                        <p style="font-size: 0.7rem; color: #666;">Jan 22, 2026 • 10:15 AM</p>
+                    </div>
+                    <span class="badge" style="color: #25D366; background: rgba(37,211,102,0.1);">Completed</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-col">
+            <div class="dash-card" style="text-align: center; margin-bottom: 20px;">
+                <p style="color: #888; font-size: 0.8rem;">Project Balance</p>
+                <h2 style="font-size: 2rem; margin: 10px 0;">KES 4,500</h2>
+                <button style="width: 100%; background: var(--primary); color: #000; padding: 12px; border: none; border-radius: 8px; font-weight: 700;">Settle Balance</button>
+            </div>
+            
+            <div class="dash-card">
+                <h4>Support</h4>
+                <p style="font-size: 0.75rem; color: #888; margin: 10px 0;">Chat with your admin.</p>
+                <button style="width:100%; background: #25D366; color: #000; padding: 12px; border: none; border-radius: 8px; font-weight: 700;" onclick="window.open('https://wa.me/254789935506')">WhatsApp Support</button>
+            </div>
+        </div>
+    </div>
   </div>
-</footer>
+
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
 
   <script>
+      
+ 
+const gallery = document.querySelector(".portfolio-gallery");
+const wrapper = document.querySelector(".portfolio-gallery-wrapper");
+
+// Clone slides for infinite scroll
+const slides = [...gallery.children];
+slides.forEach(slide => {
+  gallery.appendChild(slide.cloneNode(true));
+  gallery.prepend(slide.cloneNode(true));
+});
+
+let index = slides.length;
+let slideWidth = window.innerWidth;
+let autoScroll;
+let isDragging = false;
+let startX, scrollStart;
+let velocity = 0;
+
+// Set initial position
+function setPosition(animate = true) {
+  gallery.style.transition = animate ? "transform 0.8s cubic-bezier(.4,0,.2,1)" : "none";
+  gallery.style.transform = `translateX(-${index * slideWidth}px)`;
+}
+
+setPosition(false);
+
+// Move function
+function move(dir = 1) {
+  index += dir;
+  setPosition(true);
+
+  setTimeout(() => {
+    if (index >= slides.length * 2) index = slides.length;
+    if (index < slides.length) index = slides.length * 2 - 1;
+    setPosition(false);
+  }, 800);
+}
+
+// Auto-scroll
+function startAuto() { autoScroll = setInterval(() => move(1), 3000); }
+function stopAuto() { clearInterval(autoScroll); }
+
+startAuto();
+
+// Buttons
+const prev = document.createElement("button");
+prev.className = "carousel-btn prev"; prev.innerHTML = "‹";
+const next = document.createElement("button");
+next.className = "carousel-btn next"; next.innerHTML = "›";
+
+wrapper.append(prev, next);
+prev.onclick = () => move(-1);
+next.onclick = () => move(1);
+
+// Hover pause
+wrapper.addEventListener("mouseenter", stopAuto);
+wrapper.addEventListener("mouseleave", startAuto);
+
+// Responsive
+window.addEventListener("resize", () => { slideWidth = window.innerWidth; setPosition(false); });
+
+// Drag & momentum
+gallery.addEventListener("mousedown", e => {
+  isDragging = true;
+  startX = e.pageX;
+  scrollStart = index * slideWidth;
+  stopAuto();
+});
+
+gallery.addEventListener("mousemove", e => {
+  if (!isDragging) return;
+  const delta = e.pageX - startX;
+  gallery.style.transition = "none";
+  gallery.style.transform = `translateX(-${scrollStart - delta}px)`;
+  velocity = delta;
+});
+
+gallery.addEventListener("mouseup", () => {
+  isDragging = false;
+  if (Math.abs(velocity) > 50) move(velocity < 0 ? 1 : -1);
+  else setPosition(true);
+  velocity = 0;
+  startAuto();
+});
+
+gallery.addEventListener("mouseleave", () => {
+  if (isDragging) { isDragging = false; setPosition(true); startAuto(); }
+});
+
+// Touch support
+gallery.addEventListener("touchstart", e => {
+  isDragging = true;
+  startX = e.touches[0].pageX;
+  scrollStart = index * slideWidth;
+  stopAuto();
+});
+
+gallery.addEventListener("touchmove", e => {
+  if (!isDragging) return;
+  const delta = e.touches[0].pageX - startX;
+  gallery.style.transition = "none";
+  gallery.style.transform = `translateX(-${scrollStart - delta}px)`;
+  velocity = delta;
+});
+
+gallery.addEventListener("touchend", () => {
+  isDragging = false;
+  if (Math.abs(velocity) > 50) move(velocity < 0 ? 1 : -1);
+  else setPosition(true);
+  velocity = 0;
+  startAuto();
+});
+
+// Wheel navigation
+wrapper.addEventListener("wheel", e => {
+  e.preventDefault();
+  move(e.deltaY > 0 ? 1 : -1);
+}, { passive: false });
+
+setPosition(false);
+      
     // === 1. PARTICLE SYSTEM BACKGROUND ===
     const canvas = document.getElementById("canvas-container");
     const ctx = canvas.getContext("2d");
@@ -817,7 +1238,6 @@ Let's bring your brand to life
         particles[i].update();
         particles[i].draw();
         
-        // Connect particles close to each other
         for (let j = i; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
@@ -836,35 +1256,24 @@ Let's bring your brand to life
     }
     initParticles();
     animateParticles();
-    window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; initParticles(); });
 
-
-    // === 2. CUSTOM CURSOR & HOVER EFFECTS ===
+    // === 2. CUSTOM CURSOR ===
     const cursor = document.getElementById("cursor");
-    const hoverTargets = document.querySelectorAll(".hover-target");
-
     document.addEventListener("mousemove", (e) => {
       cursor.style.left = e.clientX + "px";
       cursor.style.top = e.clientY + "px";
     });
 
-    hoverTargets.forEach(target => {
+    document.querySelectorAll(".hover-target").forEach(target => {
       target.addEventListener("mouseenter", () => cursor.classList.add("hovered"));
       target.addEventListener("mouseleave", () => cursor.classList.remove("hovered"));
     });
 
-
     // === 3. SCROLL REVEAL ===
-    const revealElements = document.querySelectorAll(".reveal");
     const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add("active");
-        }
-      });
+      entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add("active"); });
     }, { threshold: 0.1 });
-
-    revealElements.forEach(el => revealObserver.observe(el));
+    document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
     
     // Navbar Shrink
     window.addEventListener("scroll", () => {
@@ -873,66 +1282,20 @@ Let's bring your brand to life
       else header.classList.remove("scrolled");
     });
 
-
-    // === 4. 3D CARD TILT EFFECT ===
-    const cards = document.querySelectorAll(".card");
-    cards.forEach(card => {
-      card.addEventListener("mousemove", (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = ((y - centerY) / centerY) * -15; // Max rotation 15deg
-        const rotateY = ((x - centerX) / centerX) * 15;
-
-        card.style.transform = `perspective(300px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-      });
-
-      card.addEventListener("mouseleave", () => {
-        card.style.transform = `perspective(500px) rotateX(1) rotateY(0) scale(1)`;
-      });
-    });
-
-
-    // === 5. EXISTING LOGIC (TYPING & FIREBASE) ===
-    document.addEventListener('keydown', function(e){
-      if((e.ctrlKey||e.metaKey) && (e.key==='+'||e.key==='-'||e.key==='=')) e.preventDefault();
-    });
-
-    const text = ["We are Urban Creative.", "Graphics Designers.", "Developers.", "Web Developer."];
-    let i=0, j=0, isDeleting=false;
-    const typingEl = document.getElementById("typing");
-    
+    // === 4. TYPING EFFECT ===
+    const textArr = ["We are Urban Creative.", "Graphics Designers.", "Developers.", "Web Developer."];
+    let textIdx=0, charIdx=0, isDeleting=false;
     function typeEffect(){
-      const current = text[i];
-      typingEl.textContent = current.substring(0, j);
-      let speed = 100;
-      if (isDeleting) speed = 50;
-      
-      if(!isDeleting && j < current.length) {
-        j++;
-        setTimeout(typeEffect, speed);
-      } else if(isDeleting && j > 0) {
-        j--;
-        setTimeout(typeEffect, speed);
-      } else {
-        isDeleting = !isDeleting;
-        if(!isDeleting) i = (i+1) % text.length;
-        setTimeout(typeEffect, isDeleting ? 1500 : 500);
-      }
+      const current = textArr[textIdx];
+      document.getElementById("typing").textContent = current.substring(0, charIdx);
+      if(!isDeleting && charIdx < current.length) charIdx++;
+      else if(isDeleting && charIdx > 0) charIdx--;
+      else { isDeleting = !isDeleting; if(!isDeleting) textIdx = (textIdx+1) % textArr.length; }
+      setTimeout(typeEffect, isDeleting ? 50 : 150);
     }
     typeEffect();
 
-    const hamburger = document.getElementById("hamburger");
-    const nav = document.getElementById("nav");
-    function toggleMenu() { hamburger.classList.toggle("active"); nav.classList.toggle("active"); }
-    hamburger.addEventListener("click", toggleMenu);
-    nav.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => { hamburger.classList.remove("active"); nav.classList.remove("active"); });
-    });
-
+    // === 5. FIREBASE AUTH & TRANSITION ===
     const firebaseConfig = {
       apiKey: "AIzaSyBZJo2lnFzrDnYlB0t4WG2YaXlnbt_pYTQ",
       authDomain: "urban-creative.firebaseapp.com",
@@ -941,29 +1304,14 @@ Let's bring your brand to life
       messagingSenderId: "905839758435",
       appId: "1:905839758435:web:ee7afe41d14a3a797c7c56"
     };
-    
     if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
     const auth = firebase.auth();
 
     function showTab(tab){
-      const loginForm = document.getElementById("loginForm");
-      const signupForm = document.getElementById("signupForm");
-      const loginTab = document.getElementById("loginTab");
-      const signupTab = document.getElementById("signupTab");
-      const msg = document.getElementById("msg");
-
-      if (tab === 'login') {
-        loginForm.classList.remove("hidden");
-        signupForm.classList.add("hidden");
-        loginTab.classList.add("active");
-        signupTab.classList.remove("active");
-      } else {
-        loginForm.classList.add("hidden");
-        signupForm.classList.remove("hidden");
-        loginTab.classList.remove("active");
-        signupTab.classList.add("active");
-      }
-      msg.innerText = "";
+      document.getElementById("loginForm").classList.toggle("hidden", tab !== 'login');
+      document.getElementById("signupForm").classList.toggle("hidden", tab !== 'signup');
+      document.getElementById("loginTab").classList.toggle("active", tab === 'login');
+      document.getElementById("signupTab").classList.toggle("active", tab === 'signup');
     }
 
     function signup(){
@@ -972,7 +1320,10 @@ Let's bring your brand to life
       const msg = document.getElementById("msg");
       msg.style.color = "#ccc"; msg.innerText = "Processing...";
       auth.createUserWithEmailAndPassword(email, password)
-        .then(() => { msg.style.color = "#4caf50"; msg.innerText = "✅ Account Created!"; })
+        .then(() => { 
+            msg.style.color = "#4caf50"; msg.innerText = "✅ Account Created! Redirecting..."; 
+            setTimeout(() => enterDashboard(email), 1500);
+        })
         .catch(e => { msg.style.color = "#ff4444"; msg.innerText = "Error: " + e.message; });
     }
 
@@ -982,10 +1333,52 @@ Let's bring your brand to life
       const msg = document.getElementById("msg");
       msg.style.color = "#ccc"; msg.innerText = "Authenticating...";
       auth.signInWithEmailAndPassword(email, password)
-        .then(() => { msg.style.color = "#4caf50"; msg.innerText = "👋 Welcome back!"; })
+        .then(() => { 
+            msg.style.color = "#4caf50"; msg.innerText = " Welcome! Redirecting..."; 
+            setTimeout(() => enterDashboard(email), 1200);
+        })
         .catch(e => { msg.style.color = "#ff4444"; msg.innerText = "Error: " + e.message; });
     }
-  </script>
 
+    function enterDashboard(email) {
+        // Hide Main Site, Show Dashboard
+        document.getElementById("main-site-content").classList.add("hidden");
+        document.getElementById("dashboard").classList.remove("hidden");
+        document.getElementById("dash-welcome").innerText = "Welcome, " + email.split('@')[0];
+        window.scrollTo(0,0);
+        
+        // Animate progress bar
+        setTimeout(() => {
+            document.getElementById("p-bar").style.width = "65%";
+        }, 500);
+    }
+
+    // === 6. SERVICE CART LOGIC ===
+    let wc2Cart = {}; let wc2Total = 0;
+    function wc2Add(name, price) {
+        wc2Cart[name] = (wc2Cart[name] || 0) + 1;
+        wc2Total += price;
+        wc2Render();
+    }
+    function wc2Render() {
+        const list = document.getElementById("wc2List");
+        list.innerHTML = "";
+        Object.keys(wc2Cart).forEach(item => {
+            list.innerHTML += `<li style="display:flex; justify-content:space-between; margin-bottom:5px;"><span>${item} × ${wc2Cart[item]}</span></li>`;
+        });
+        document.getElementById("wc2Total").textContent = wc2Total.toLocaleString();
+    }
+    function wc2Send() {
+        if (wc2Total === 0) return alert("Select a service first!");
+        let msg = "Hello Urban Creative, I'd like to order:%0A";
+        Object.keys(wc2Cart).forEach(item => { msg += `• ${item} (x${wc2Cart[item]})%0A`; });
+        window.open("https://wa.me/254789935506?text=" + msg + "%0ATotal: KES " + wc2Total);
+    }
+
+    const hamburger = document.getElementById("hamburger");
+    const nav = document.getElementById("nav");
+    hamburger.addEventListener("click", () => { hamburger.classList.toggle("active"); nav.classList.toggle("active"); });
+</script>
+  </script>
 </body>
-</html>
+</html>    
